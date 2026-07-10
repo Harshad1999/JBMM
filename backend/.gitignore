@@ -1,0 +1,22 @@
+cat > backend/.gitignore << 'EOF'
+# Secrets — never commit these
+.env
+.env.*
+service-account.json
+env.yaml
+*.json.key
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.egg-info/
+
+# Test artifacts
+.pytest_cache/
+test_reports/
+
+# OS
+.DS_Store
+EOF

@@ -1,0 +1,84 @@
+{
+  "project_name": "Jai Bharat Mitra Mandal - Collection App",
+  "theme": "light",
+  "typography": {
+    "headings": {
+      "font_family": "Cabinet Grotesk",
+      "weights": [600, 800],
+      "usage": "Dashboard stats, Section Titles, and Receipt Numbers (e.g., JBM-2026-0001). Use tight letter spacing."
+    },
+    "body": {
+      "font_family": "Manrope",
+      "weights": [400, 500, 600, 700],
+      "usage": "Form labels, donor names, notes, lists. Chosen for high legibility outdoors and clarity in dense data lists."
+    }
+  },
+  "colors": {
+    "palette_archetype": "Indian Festive",
+    "background": "#FAFAF9",
+    "surface": "#FFFFFF",
+    "primary": "#FF671F",
+    "primary_foreground": "#FFFFFF",
+    "secondary": "#FFB300",
+    "secondary_foreground": "#1C1917",
+    "text_primary": "#1C1917",
+    "text_secondary": "#57534E",
+    "border": "#E7E5E4",
+    "success": "#16A34A",
+    "error": "#DC2626",
+    "offline_sync": "#F59E0B"
+  },
+  "layouts": {
+    "core_strategy": "Mobile-first, thumb-friendly. Designed for fast door-to-door use.",
+    "spacing": "Generous touch zones. Use gap-4 between form fields, and p-4 to p-6 for screen margins.",
+    "grid": "Dashboard uses a dense bento grid (grid-cols-2). Highlight 'Total Funds' across 2 columns.",
+    "navigation": "Sticky bottom bar or large Floating Action Button (FAB) for the 'New Collection' action to ensure thumb reachability."
+  },
+  "visual_enhancers": {
+    "surfaces": "Flat Solid surfaces. Avoid excessive glassmorphism on forms to maintain clarity under strong sunlight outdoors.",
+    "borders": "1px solid border (#E7E5E4) on cards, rounded-xl. rounded-2xl for modals/drawers.",
+    "shadows": "Ambient subtle shadow only on floating elements like FABs, offline sync banner, or sticky headers.",
+    "icons": "Use lucide-react. Ensure icons are minimum 24px."
+  },
+  "components": {
+    "forms": "Use Shadcn Inputs. Minimum height 48px for all touch targets. Use type='number' for amount to trigger numeric keypad.",
+    "toggles": "Use Shadcn ToggleGroup or segmented control style for Cash / Mark as Paid. Provide distinct visual selected states.",
+    "cards": "Use Shadcn Card (flat, no shadow).",
+    "modals": "Use Shadcn Drawer (bottom sheet) for mobile context (filters, action menus) over Dialogs.",
+    "badges": "Use rounded-full badges for Volunteer Roles (Admin/Volunteer/Deactivated) and Offline Sync indicators (Saffron/Yellow banner).",
+    "receipt": "Render receipt preview in a clean, bordered white box with subtle festive pattern background. Include clear WhatsApp share CTA."
+  },
+  "motion": {
+    "interactions": "Micro-interactions on press (active:scale-95). Smooth slide-up for bottom sheets.",
+    "transitions": "transition-colors duration-200 for hovers. Do not use 'transition-all'."
+  },
+  "accessibility": {
+    "touch_targets": "Minimum 48px height/width for all interactive elements.",
+    "contrast": "Ensure primary colors against white meet 4.5:1 contrast. Adjust Saffron to #E65A15 if needed for strict AA, or use bold text.",
+    "testing": "All interactive elements MUST have data-testid attributes (e.g., data-testid='submit-collection-btn')."
+  },
+  "image_urls": [
+    {
+      "category": "hero_login",
+      "url": "https://images.unsplash.com/photo-1567591414240-e9c1e59f3e06?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwzfHxnYW5lc2glMjBmZXN0aXZhbHxlbnwwfHx8fDE3ODM3MDcxODJ8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Three Lord Ganesha statuettes. Use as the hero/branding image for the Google Sign-In page. Apply gradient overlay to anchor text."
+    },
+    {
+      "category": "pattern_background",
+      "url": "https://images.unsplash.com/photo-1739478469587-3fb2a3bce924?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwzfHxpbmRpYW4lMjBmZXN0aXZlJTIwcGF0dGVybiUyMGFic3RyYWN0fGVufDB8fHx8MTc4MzcwNzE4Mnww&ixlib=rb-4.1.0&q=85",
+      "description": "Seamless geometric festive pattern. Use with 5-10% opacity as a subtle background texture on the dashboard headers or receipt view."
+    }
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "CRITICAL: Generate/Edit `.js` and `.jsx` files ONLY. Do NOT create `.tsx` or `.ts` files.",
+    "Do NOT use default Inter for headings. Implement Cabinet Grotesk or Manrope.",
+    "Use solid Indian festive colors (Saffron, Marigold). No generic SaaS blue.",
+    "Optimize UI for mobile views (use max-w-md mx-auto wrapper if rendering on a desktop browser to simulate mobile app).",
+    "DO NOT use fully transparent backgrounds on headers or sticky navs; always use a solid or heavy blur surface.",
+    "Ensure all buttons have interaction animations (scale, color shift) excluding layout transforms.",
+    "Use `sonner` for offline sync, copy, and receipt sent notifications.",
+    "Left-align all data-dense forms and text; avoid center alignment except for hero titles.",
+    "Ensure data-testid attributes on every button, input, and list item.",
+    "Build the PDF Receipt preview cleanly so it's easy to read and screenshot/share via WhatsApp."
+  ]
+}
