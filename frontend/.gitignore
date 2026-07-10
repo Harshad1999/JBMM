@@ -1,0 +1,7 @@
+cat >> frontend/.gitignore << 'EOF'
+
+# Secrets — never commit these
+.env
+google-services.json
+GoogleService-Info.plist
+EOF
