@@ -38,7 +38,10 @@ export function buildReceiptHtml(c: Collection): string {
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Receipt ${esc(c.receipt_no)}</title>
 <style>
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 24px; color: #1C1917; background: #FAFAF9; }
   .card { max-width: 560px; margin: 0 auto; background: #fff; border: 2px solid #FF671F; border-radius: 16px; overflow: hidden; }
   .band { background: linear-gradient(135deg, #FF671F, #FFB300); color: #fff; padding: 20px 24px; text-align: center; }
@@ -131,7 +134,33 @@ export async function generateReceiptPdf(c: Collection): Promise<string> {
   const html = buildReceiptHtml(c);
   const { uri } = await Print.printToFileAsync({ html, base64: false });
   return uri;
-}
+};
+
+function printReceiptOnWeb(c: Collection): void {
+  const html = buildReceiptHtml(c);
+  const printWindow = window.open("", "_blank");
+  if (!printWindow) {
+    if (typeof window !== "undefined") {
+      window.alert(
+        "Please allow popups for this site to download/print the receipt.",
+      );
+    }
+    return;
+  }
+  printWindow.document.open();
+  printWindow.document.write(html);
+  printWindow.document.close();
+  printWindow.onload = () => {
+    printWindow.focus();
+    printWindow.print();
+  };
+  setTimeout(() => {
+    try {
+      printWindow.focus();
+      printWindow.print();
+    } catch {}
+  }, 400);
+};
 
 /**
  * Single "Share Receipt" flow:
@@ -147,6 +176,10 @@ export async function shareReceipt(
   try {
     await Clipboard.setStringAsync(message);
   } catch {}
+  if (Platform.OS === "web") {
+    printReceiptOnWeb(c);
+    return { pdfUri: "", message };
+  }
   const pdfUri = await generateReceiptPdf(c);
   const canShare = await Sharing.isAvailableAsync();
   if (canShare) {

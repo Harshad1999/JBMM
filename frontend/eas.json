@@ -9,7 +9,18 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_BACKEND_URL": "https://jbmm-backend-60031875798.asia-south1.run.app",
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyCBq9MV0MKMhl2TAr-eO9nYc3_9TExJE58",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "jbmm-72ea1.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "jbmm-72ea1",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "jbmm-72ea1.firebasestorage.app",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "60031875798",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:60031875798:web:b5f34158a7121db43fa777",
+        "EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID": "60031875798-rvkp60p1u6o4rupam6tvoggvekidcl8g.apps.googleusercontent.com",
+        "EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID": "60031875798-uco2ckr1vo8jguv784dup8cpl6gfiq0c.apps.googleusercontent.com"
+      }
     },
     "production": {
       "autoIncrement": true
